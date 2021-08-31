@@ -1,0 +1,34 @@
+service:
+    image:
+    dockerfile:
+    config:
+        {
+            type: mount
+            name: app source folder
+            src: "" (prompt)
+            dst: /var/www
+        }
+        {
+            type: mount
+            src: services/name/config.conf
+            dst: /container/config.conf
+        }
+        {
+            type: mount
+            src: storage/logs/service/service.log
+            dst: /container/var/log/service.log
+        }
+        {
+            type: env
+            name: PORT
+            value: 3306
+            export: true
+            prompt: "Enter MySQL port"
+        }
+        {
+            type: replace
+            name: webroot
+            prompt: "Enter web root dir"
+            file: service/name/config.conf              (replace ${webroot})
+            default: /var/www/public
+        }
