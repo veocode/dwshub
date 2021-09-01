@@ -18,12 +18,27 @@
     },
     "settings": [
         {
-            "type": "mount",
+            "name": "port",
+            "default": "80",
+            "export": false
+        },
+        {
+            "name": "doc_root",
+            "default": "/var/www/public",
+            "export": false
+        },
+        {
+            "name": "fastcgi_pass",
+            "default": "fpm:9000",
+            "export": false
+        }
+    ],
+    "volumes": [
+        {
             "src": "{service}/nginx.conf",
             "dst": "/etc/nginx/conf.d/nginx.conf"
         },
         {
-            "type": "mount",
             "src": "{storage}/logs",
             "dst": "/var/log/nginx"
         }
