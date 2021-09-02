@@ -1,0 +1,29 @@
+{
+    "name": "",
+    "subnet": "",
+    "services": {
+        "nginx": {
+            "image": "",
+            "build": "",
+            "volumes": [
+                {
+                    "src": "/path",
+                    "dst": "/path"
+                }
+            ],
+            "env_files": [
+                "file1",
+                "file2"
+            ],
+            "depends_on": [
+                "service1"
+            ],
+            "ports": [
+                {
+                    "src": 8081,
+                    "dst": 80
+                }
+            ]
+        }
+    }
+}

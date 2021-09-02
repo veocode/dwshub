@@ -1,0 +1,48 @@
+{
+    "name": "nginx",
+    "image": "nginx:alpine",
+    "build": "",
+    "settings": [
+        {
+            "name": "port",
+            "default": "80",
+            "prompt": true,
+            "export": true
+        },
+        {
+            "name": "fastcgi_pass",
+            "default": "app:9000",
+            "prompt": true
+        },
+        {
+            "name": "web_root",
+            "default": "src",
+            "prompt": true,
+            "mkdir": true
+        }
+    ],
+    "storage": [
+        "logs"
+    ],
+    "volumes": [
+        {
+            "src": "{web_root}",
+            "dst": "/var/www"
+        },
+        {
+            "src": "{service}/nginx.conf",
+            "dst": "/etc/nginx/conf.d/nginx.conf"
+        },
+        {
+            "src": "{storage}/logs",
+            "dst": "/var/log/nginx"
+        }
+    ],
+    "ports": [
+        {
+            "src": "{port}",
+            "dst": "80"
+        }
+    ],
+    "environment": []
+}
